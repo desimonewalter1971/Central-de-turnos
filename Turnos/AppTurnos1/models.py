@@ -17,7 +17,7 @@ class agendaDisponiblePorMedico(models.Model):
     horario = models.DateTimeField()
     tarde_mañana = models.DateField()
 
-class paciturnoReservado(models.Model):
+class turnoReservado(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
     medico= models.CharField(max_length=40)
