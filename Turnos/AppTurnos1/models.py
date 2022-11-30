@@ -9,18 +9,21 @@ class medicos(models.Model):
 class pacientes(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
-    Dia = models.CharField(max_length=40)
-    fechaNacimento = models.IntegerField()
+    obraSocial = models.CharField(max_length=40)
+    fechaNacimento = models.DateField()
 
 class agendaDisponiblePorMedico(models.Model):
-    horario = models.CharField(max_length=40)
-    tarde_mañana = models.CharField(max_length=40)
+    medico= models.CharField(max_length=40)
+    horario = models.DateTimeField()
+    tarde_mañana = models.DateField()
 
 class paciturnoReservado(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
-    Dia = models.CharField(max_length=40)
-    fechaNacimento = models.IntegerField()    
+    medico= models.CharField(max_length=40)
+    obraSocial = models.CharField(max_length=40)
+    Dia = models.DateField()
+
     
 
     
