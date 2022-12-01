@@ -1,14 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from AppTurnos1.models import medicos as mc
+from django.core import serializers
+
+
+def inicio (request):
+    return render(request,'AppTurnos1/inicio.html')
+
 def medicos (request):
-    return HttpResponse('vista medicos')
+    return render(request,'AppTurnos1/medicos.html')
+
+def medicosapi (request):
+    todos_medicos=mc.objects.all()
+    return HttpResponse(serializers.serialize('json', todos_medicos))    
 
 def pacientes (request):
-    return HttpResponse('vista pacientes')
+    return render(request,'AppTurnos1/pacientes.html')
 
 def agendaDisponiblePorMedico (request):
-    return HttpResponse('vista agendaDisponiblePorMedico')
+    return render('AppTurnos1/agendaDisponiblePorMedico.html')
 
 def turnoReservado (request):
-    return HttpResponse('vista turnoReservado')            
+    return render('AppTurnos1/turnoReservado.html')            

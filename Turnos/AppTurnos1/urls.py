@@ -2,8 +2,10 @@ from django.urls import path
 from AppTurnos1 import views
  
 urlpatterns = [
-    path('medicos/', views.medicos),
-    path('pacientes/', views.pacientes),
-    path('agendaDisponiblePorMedico/', views.medicagendaDisponiblePorMedico),
-    path('turnoReservado/', views.turnoReservado),
+    path('', views.inicio),
+    path('medicos/', views.medicos,name='medico'),
+    path('medicosApi/', views.medicosapi),
+    path('pacientes/', views.pacientes,name='pacientes'),
+    path('agendaDisponiblePorMedico/', views.agendaDisponiblePorMedico),
+    path('turnoReservado/', views.turnoReservado,name='turnoReservado')
 ] 
