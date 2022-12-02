@@ -7,4 +7,15 @@
 <h1> Médicos </h1>
 <p> Aca va la info de Cursos </p>
 
+<p> Creando el formulario </p>
+
+<form action=""    method="post">{% csrf_token %}
+    <table>
+        {{miFormulariomedicos.as_table}}
+    </table>
+    <br>
+    <input type="submit", value= "Enviar">
+</form>
+
+
 {% endblock %}
