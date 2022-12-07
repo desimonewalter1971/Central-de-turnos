@@ -1,0 +1,14 @@
+def buscar(request):
+    busqueda = request.POST.get("buscar")
+    search = Familiar.objects.all()
+    print(busqueda)
+    
+    if busqueda:
+        search = Familiar.objects.filter(
+            Q(id__icontains = busqueda) | 
+            Q(nombre__icontains = busqueda) | 
+            Q(edad__icontains = busqueda) |
+            Q(parentesco__icontains = busqueda) |
+            Q(fecha_naciomiento__icontains = busqueda)
+        ).distinct()
+    return render(request, 'app/buscar.html', {'search': search})

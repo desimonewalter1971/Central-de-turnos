@@ -3,9 +3,9 @@ from AppTurnos1 import views
  
 urlpatterns = [
     path('', views.inicio),
-    path('medicos/', views.medicos,name='medico'),
+    path('medicos/', views.medico,name='medico'),
     path('medicosApi/', views.medicosapi),
-    path('pacientes/', views.pacientes,name='pacientes'),
+    path('pacientes/', views.paciente,name='pacientes'),
     path('agendaDisponiblePorMedico/', views.agendaDisponiblePorMedico),
     path('turnoReservado/', views.turnoReservado,name='turnoReservado')
 ] 
