@@ -12,3 +12,29 @@ def buscar(request):
             Q(fecha_naciomiento__icontains = busqueda)
         ).distinct()
     return render(request, 'app/buscar.html', {'search': search})
+
+Valoracion Aporte Gabriel 6-12-2022
+
+Buenas! Pudieron avanzar con eso? Les dejo comentarios sobre lo que vi hasta hoy.
+
+1)El proyecto como lo mandaron no lograba levantar el servidor, lo cual es crucial para poder empezar a evaluar el trabajo. Igual era una pavada, la llamada al archivo "forms" no devolvía nada porque se llamaba "form".
+
+2) Veo que su página tendría muchas funcionalidades muy interesantes como reserva de turnos y alta de médicos en cartilla. No me quedó claro si van a hacer un form para consultar qué profesionales se cargaron o qué turnos ya que esta funcionalidad de búsqueda sería una de las centrales para la consigna. Cuando entreguen la versión final, si es que crean un formulario para mostrar las dos cosas (solo una hace falta para cumplir con la consigna) estaría bueno que comenten en el readme qué es lo que ya están operativo para saber qué evaluar. Entiendo que este proyecto ya está perfilándose (y muy bien) para la entrega final asi que supongo que por eso capaz fueron sumando bastante. 
+
+3) Ahora la navegabilidad, otra cosa importantísima para cumplir con la entrega se veía afectada por errores como que en la linea 18 de las vistas de la aplicación decía "miFormulario.is_valid" y debía decir miFormulariomedicos y al metodo is_valid le faltaron los ()
+
+en ese mismo archivo, a la altura de la linea 23 hace falta llamar al modelo de la manera en que se lo importa a las vistas. Y por algún motivo no me agarra la información de los médicos si no la mando de esta forma
+
+if miFormulariomedicos.is_valid():
+            informacion = miFormulariomedicos.cleaned_data
+            nombre = informacion['nombre']
+            apellido = informacion['apellido']
+            matricula = informacion['matricula']
+            medico= mc(nombre= nombre, apellido= apellido, matricula= matricula)
+            medico.save()
+            return render(request, "AppTurnos1/medicos.html")
+como lo hicieron creo que es como figura en las placas y como suele mostrarse en las clases, a fines prácticos debería ser lo mismo, pero se los dejo como observación por si esto tenía que ver con lo que los frenaba. Si quieren puedo subirles en una rama esa vista modificada para que funcione.
+
+4) avisenme como siguen y qué errores concretos les van saltando para orientarlos en lo posible. El trabajo por como vienen hasta ahora ya cumple para estar aprobado, pero los espero para que lleguen a la calificación óptima. 
+
+Hablamos!

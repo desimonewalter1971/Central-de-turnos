@@ -24,6 +24,9 @@ class turnoReservado(models.Model):
     obraSocial = models.CharField(max_length=40)
     Dia = models.DateField()
 
+class Especialidades(models.Model):
+    Especialidad = models.CharField(max_length=40)
+
     
 
     

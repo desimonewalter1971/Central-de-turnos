@@ -1,0 +1,22 @@
+  =>  Template Name    : MEDINOVA - Hospital Website Template
+
+  =>  Template Link    : https://htmlcodex.com/hospital-website-template
+
+  =>  Template License : https://htmlcodex.com/license (or read the LICENSE.txt file)
+
+  =>  Template Author  : HTML Codex
+
+  =>  Author Website   : https://htmlcodex.com
+
+  =>  About HTML Codex : HTML Codex is one of the top creators and publishers of Free HTML templates, HTML landing pages, HTML email templates and HTML snippets in the world. Read more at ( https://htmlcodex.com/about-us )
+
+
+  Gabriel te explicamos el proyecto.
+
+  1- la idea es tener BD Medicos, Especialidad, Pacientes, disponibilidad de turno por medico y turnos asignados.
+
+  En Menu Medicos se cargarian en sub menu especialidades, medicos.
+  Falta desarrollar Especialidades 
+  La consulta es si es complicar las cosas que Especialidad tenga una base de Datos aparte y al 
+  generar un nuevo medico, especialidad deba existir previamente y se cargue en una lista.
+  
