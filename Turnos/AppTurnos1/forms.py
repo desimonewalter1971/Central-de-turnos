@@ -12,5 +12,6 @@ class pacientesFormulario(forms.Form):
     DNI=forms.IntegerField()
     fechaNacimento= forms.DateField()    
 
-class EspecialidadesFormulario(forms.Form):
-    especialidad = forms.CharField(max_length=40)    
+class especialidadesFormulario(forms.Form):
+    especialidad= forms.CharField()
+

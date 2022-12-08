@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from AppTurnos1.models import medicos, pacientes 
+from AppTurnos1.models import medicos, pacientes, Especialidades 
 from django.core import serializers
 
-from AppTurnos1.forms import medicosFormulario ,pacientesFormulario,EspecialidadesFormulario
+from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario
 
 
 def inicio (request):
-    return render(request,'Appturnos1/index.html')
+    return render(request,"Appturnos1/index.html")
 
 def medico (request):
     if request.method == "POST":
@@ -29,13 +29,26 @@ def medicosapi (request):
     todos_medicos=medicos.objects.all()
     return HttpResponse(serializers.serialize('json', todos_medicos))    
 
-def especialidad (request):   
-    if miFormularioEspecialidad.is_valid():
-            informacion = miFormularioEspecialidad.cleaned_data
-            especialidad = informacion['especialidad']
-            especialidad= Especialidades(especialidad= especialidad)
+def especialidadForm (request):   
+    if request.method == 'POST':
+        infoFormularioEspecialidad = especialidadesFormulario(request.POST) # Aqui me llega la informacion del html
+        if  infoFormularioEspecialidad.is_valid():
+            informacion=infoFormularioEspecialidad.cleaned_data
+            especialidad=Especialidades(especialidad=informacion['especialidad'])
             especialidad.save()
-            return render(request, "AppTurnos1/especialdad.html",{"miFormularioEspecialidad":miFormularioEspecialidad}) 
+            return render(request,"AppTurnos1/medicos.html")
+    else:
+        miFormularioespecialidad= especialidadesFormulario()
+    return render(request, "AppTurnos1/especialidad.html",{'miFormularioespecialidad': miFormularioespecialidad}) 
+   
+   
+   
+   # if miFormularioEspecialidad.is_valid():
+   #         informacion = miFormularioEspecialidad.cleaned_data
+   #         especialidad = informacion['especialidad']
+   #         especialidad= Especialidades(especialidad= especialidad)
+   #         especialidad.save()
+   #         return render(request, "AppTurnos1/especialdad.html",{"miFormularioEspecialidad":miFormularioEspecialidad}) 
 
 def paciente (request):
     if request.method == "POST":

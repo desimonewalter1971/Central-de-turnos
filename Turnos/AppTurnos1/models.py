@@ -6,7 +6,7 @@ class medicos(models.Model):
     apellido = models.CharField(max_length=40)
     matricula = models.IntegerField()
 
-class Especialidades(models.Model):
+class Especialidades (models.Model):
     especialidad  = models.CharField(max_length=40)
 
 class pacientes(models.Model):
