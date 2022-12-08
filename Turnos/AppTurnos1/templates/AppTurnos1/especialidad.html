@@ -4,15 +4,16 @@
 
 {% block Acavaloquecambia %}
 
-<h5> Médicos </h5>
+
+<h5> Crear Especialidad </h5>
 
 <form action=""    method="post">{% csrf_token %}
     <table>
-        {{miFormulariomedicos.as_table}}
+        {{miFormularioEspecialidad.as_table}}
     </table>
     <br>
-    <input type="submit", value= "cargar">
-
+    <input type="submit", value= "Cargar">
 </form>
+
 
 {% endblock %}

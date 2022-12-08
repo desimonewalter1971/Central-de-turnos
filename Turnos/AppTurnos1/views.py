@@ -4,11 +4,11 @@ from django.http import HttpResponse
 from AppTurnos1.models import medicos, pacientes 
 from django.core import serializers
 
-from AppTurnos1.forms import medicosFormulario ,pacientesFormulario
+from AppTurnos1.forms import medicosFormulario ,pacientesFormulario,EspecialidadesFormulario
 
 
 def inicio (request):
-    return render(request,'AppTurnos1/inicio.html')
+    return render(request,'Appturnos1/index.html')
 
 def medico (request):
     if request.method == "POST":
@@ -28,6 +28,14 @@ def medico (request):
 def medicosapi (request):
     todos_medicos=medicos.objects.all()
     return HttpResponse(serializers.serialize('json', todos_medicos))    
+
+def especialidad (request):   
+    if miFormularioEspecialidad.is_valid():
+            informacion = miFormularioEspecialidad.cleaned_data
+            especialidad = informacion['especialidad']
+            especialidad= Especialidades(especialidad= especialidad)
+            especialidad.save()
+            return render(request, "AppTurnos1/especialdad.html",{"miFormularioEspecialidad":miFormularioEspecialidad}) 
 
 def paciente (request):
     if request.method == "POST":

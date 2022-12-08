@@ -7,5 +7,6 @@ urlpatterns = [
     path('medicosApi/', views.medicosapi),
     path('pacientes/', views.paciente,name='pacientes'),
     path('agendaDisponiblePorMedico/', views.agendaDisponiblePorMedico),
-    path('turnoReservado/', views.turnoReservado,name='turnoReservado')
+    path('turnoReservado/', views.turnoReservado,name='turnoReservado'),
+    path('especialidad/', views.especialidad,name='especialidad'),
 ] 
