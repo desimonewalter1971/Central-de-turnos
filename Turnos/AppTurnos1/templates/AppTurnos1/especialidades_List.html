@@ -1,0 +1,16 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Lista Especialidades </h5>
+
+
+    {% for especialidad in object_list %}
+
+        <p>{{especialidad.especialidad}}</p>
+
+    {% endfor %}
+
+{% endblock %}

@@ -10,4 +10,9 @@ urlpatterns = [
     path('agendaDisponiblePorMedico/', views.agendaDisponiblePorMedico),
     path('turnoReservado/', views.turnoReservado,name='turnoReservado'),
     path('especialidad/', views.especialidadForm,name='especialidad'),
+    path('crearespecialidad/', views.crearespecialidad),
+    path('leerespecialidades/', views.leerespecialidades),
+    path('editarespecialidad/', views.editarespecialidad),
+    path('borrarespecialidad/', views.borrarespecialidad),
+    path('especialidades/Lista/', views.especialidadList.as_view()),
 ] 

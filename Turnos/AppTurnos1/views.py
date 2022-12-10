@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-from AppTurnos1.models import medicos, pacientes, Especialidades 
+from django.template import context
+from AppTurnos1.models import medicos, pacientes, especialidades 
 from django.core import serializers
 
 from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario
@@ -34,7 +34,7 @@ def especialidadForm (request):
         infoFormularioEspecialidad = especialidadesFormulario(request.POST) # Aqui me llega la informacion del html
         if  infoFormularioEspecialidad.is_valid():
             informacion=infoFormularioEspecialidad.cleaned_data
-            especialidad=Especialidades(especialidad=informacion['especialidad'])
+            especialidad=especialidades(especialidad=informacion['especialidad'])
             especialidad.save()
             return render(request,"AppTurnos1/medicos.html")
     else:
@@ -42,13 +42,35 @@ def especialidadForm (request):
     return render(request, "AppTurnos1/especialidad.html",{'miFormularioespecialidad': miFormularioespecialidad}) 
    
    
+def crearespecialidad (request):   
+    especialidad=especialidades(especialidad="especialidadtest")
+    especialidad.save()
+    return HttpResponse(f'{especialidad.especialidad}, ha sido creada')
+
+def leerespecialidades(request):   
+    especialidad_todas =especialidades.objects.all()
+    contexto={"especialidad":especialidad_todas}
+    print(especialidad_todas)
+    #return render(request,"AppTurnos1/leerespecialidad.html", contexto)    
+    return HttpResponse(serializers.serialize ('json',especialidad_todas))    
    
-   # if miFormularioEspecialidad.is_valid():
-   #         informacion = miFormularioEspecialidad.cleaned_data
-   #         especialidad = informacion['especialidad']
-   #         especialidad= Especialidades(especialidad= especialidad)
-   #         especialidad.save()
-   #         return render(request, "AppTurnos1/especialdad.html",{"miFormularioEspecialidad":miFormularioEspecialidad}) 
+def editarespecialidad (request):   
+    especialidad_editar ="especialidadtest"
+    especialidades.objects.filter(especialidad=especialidad_editar).update(especialidad='especialidadNew')
+    return HttpResponse(f'{especialidad_editar}, ha sido actualizada')
+    
+def borrarespecialidad (request):   
+    especialidad_borrar='ttt'
+    especialidad = especialidades.objects.get(especialidad=especialidad_borrar) 
+    especialidad.delete()
+    return HttpResponse(f'{especialidad_borrar}, ha sido eliminada')
+
+from django.views.generic import ListView
+
+class especialidadList(ListView):
+    model = especialidades
+    template= 'Appturnos1/especialidades_List.html'
+
 
 def paciente (request):
     if request.method == "POST":
@@ -69,4 +91,5 @@ def agendaDisponiblePorMedico (request):
     return render('AppTurnos1/agendaDisponiblePorMedico.html')
 
 def turnoReservado (request):
-    return render('AppTurnos1/turnoReservado.html')            
+    return render('AppTurnos1/turnoReservado.html')    
+        
