@@ -15,3 +15,5 @@ generar un nuevo medico, especialidad deba existir previamente y se cargue en un
 2- Gabriel intentamos usar el ejemplo que ppasaste para hacer el formulario de especialidad, estamos trabados ahi.
 las tres bases estan funcionales desde el Admin y formularios, salvo Especialidad.
 
+Gabriel, ya fuencionan los tres modelos, se pueden cargar datos desde admin y formularios. 8/12/2022
+Falta el CRUD y la solicitud de tuno y consulta de reservas existentes buscada por paciente.
