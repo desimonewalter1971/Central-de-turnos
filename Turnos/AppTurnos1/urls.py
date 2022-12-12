@@ -6,9 +6,17 @@ urlpatterns = [
     # path('inicio', views.inicio,name='inicio'),
     path('medicos/', views.medico,name='medico'),
     path('medicosApi/', views.medicosapi),
-    path('pacientes/', views.paciente,name='pacientes'),
+    #
     path('agendaDisponiblePorMedico/', views.agendaDisponiblePorMedico),
     path('turnoReservado/', views.turnoReservado,name='turnoReservado'),
+    #
+    path('pacientes/', views.paciente,name='pacientes'),
+    path('pacientes/lista/', views.pacienteList.as_view(),name='Listpaciente'),
+    path('pacientes/crear/', views.pacienteCreate.as_view(),name='Newpaciente'),
+    path('pacientes/editar/<pk>', views.pacienteEdit.as_view(),name='Editpaciente'),
+    path('pacientes/detalle/<pk>', views.pacienteDetail.as_view(),name='Detailpaciente'),
+    path('pacientes/borrar/<pk>', views.pacienteDelete.as_view(),name='Deletepaciente'),
+    #
     path('especialidad/', views.especialidadForm,name='especialidad'),
     path('crearespecialidad/', views.crearespecialidad),
     path('leerespecialidades/', views.leerespecialidades),

@@ -85,13 +85,13 @@ class especialidadEdit(UpdateView):
     
 class especialidadDetail(DetailView):
     model = especialidades
-    print(especialidades.especialidad)
     template= 'Appturnos1/especialidades_Detail.html'   
     
 class especialidadDelete(DeleteView):
-    model = especialidades  
-     
+    model = especialidades       
     success_url= '/Appturnos1/especialidades/lista/'     
+
+#
 
 def paciente (request):
     if request.method == "POST":
@@ -113,4 +113,28 @@ def agendaDisponiblePorMedico (request):
 
 def turnoReservado (request):
     return render('AppTurnos1/turnoReservado.html')    
+
+
+class pacienteList(ListView):
+    model = pacientes
+    template= 'Appturnos1/pacientes_List.html'
+    
+class pacienteCreate(CreateView):
+    model = pacientes
+    fields= '__all__'
+    success_url= '/Appturnos1/pacientes/lista/'#'http://127.0.0.1:8000/Appturnos1/especialidades/lista/'    
+
+class pacienteEdit(UpdateView):
+    model = pacientes
+    fields= '__all__'
+    success_url= '/Appturnos1/pacientes/lista/'
+    
+class pacienteDetail(DetailView):
+    model = pacientes
+    template= 'Appturnos1/pacientes_Detail.html'   
+    
+class pacienteDelete(DeleteView):
+    model = pacientes     
+    success_url= '/Appturnos1/pacientes/lista/'     
+
         

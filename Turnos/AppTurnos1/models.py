@@ -20,6 +20,7 @@ class pacientes(models.Model):
     obraSocial = models.CharField(max_length=40)
     DNI=models.IntegerField()
     fechaNacimento = models.DateField()
+    
     def __str__(self):
         return (f"Nombre-Apellido: {self.nombre} {self.apellido} - Obra Social: {self.obraSocial} - DNI: {self.DNI} - Fecha Nacimiento: {self.fechaNacimento}")
 

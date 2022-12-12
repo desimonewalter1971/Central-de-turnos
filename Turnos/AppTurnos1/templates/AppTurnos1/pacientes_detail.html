@@ -1,0 +1,12 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Detalle Pacientes </h5>
+
+    Paciente: {{paciente.id}} - {{pacientes.nombre}} - {{pacientes.apellido}} - {{pacientes.obraSocial}} - {{pacientes.DNI}} - {{pacientes.fechaNacimiento}}
+    <a href="{% url 'Listpaciente'   %}"> <br><br> Regresar</a>
+
+{% endblock %}

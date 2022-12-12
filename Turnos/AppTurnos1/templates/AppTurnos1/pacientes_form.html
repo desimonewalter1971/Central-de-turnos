@@ -5,16 +5,12 @@
 {% block Acavaloquecambia %}
 
 <form action=""    method="post">{% csrf_token %}
- 
-    <p> Estas seguro que queres borra la Especialidad {{ object.especialiad }}?</p>
-  
+    <table>
+        {{form.as_table}}
+    </table>
     <br>
-    <input type="submit" value= "Eliminar">
+    <input type="submit" value= "Crear">
 
 </form>
 
-<br>
-
-    <select> </select>
-    
 {% endblock %}
