@@ -6,11 +6,18 @@
 
 <h5> Lista Especialidades </h5>
 
-
+<ul>
     {% for especialidad in object_list %}
 
         <p>{{especialidad.especialidad}}</p>
-
+    
+        <p>
+            <a href="{% url 'Detail' especialidad.id %}"> Ver</a>
+            <a href="{% url 'Edit' especialidad.id %}"> Editar</a>
+            <a href="{% url 'Delete' especialidad.id %}"> Borrar</a>
+        </p>    
     {% endfor %}
+
+</ul>
 
 {% endblock %}

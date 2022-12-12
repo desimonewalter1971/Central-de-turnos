@@ -66,11 +66,32 @@ def borrarespecialidad (request):
     return HttpResponse(f'{especialidad_borrar}, ha sido eliminada')
 
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 
 class especialidadList(ListView):
     model = especialidades
     template= 'Appturnos1/especialidades_List.html'
+    
+class especialidadCreate(CreateView):
+    model = especialidades
+    fields= '__all__'
+    success_url= '/Appturnos1/especialidades/lista/'#'http://127.0.0.1:8000/Appturnos1/especialidades/lista/'    
 
+class especialidadEdit(UpdateView):
+    model = especialidades
+    fields= '__all__'
+    success_url= '/Appturnos1/especialidades/lista/'
+    
+class especialidadDetail(DetailView):
+    model = especialidades
+    print(especialidades.especialidad)
+    template= 'Appturnos1/especialidades_Detail.html'   
+    
+class especialidadDelete(DeleteView):
+    model = especialidades  
+     
+    success_url= '/Appturnos1/especialidades/lista/'     
 
 def paciente (request):
     if request.method == "POST":

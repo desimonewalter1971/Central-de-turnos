@@ -14,5 +14,9 @@ urlpatterns = [
     path('leerespecialidades/', views.leerespecialidades),
     path('editarespecialidad/', views.editarespecialidad),
     path('borrarespecialidad/', views.borrarespecialidad),
-    path('especialidades/Lista/', views.especialidadList.as_view()),
+    path('especialidades/lista/', views.especialidadList.as_view(),name='List'),
+    path('especialidades/crear/', views.especialidadCreate.as_view(),name='New'),
+    path('especialidades/editar/<pk>', views.especialidadEdit.as_view(),name='Edit'),
+    path('especialidades/detalle/<pk>', views.especialidadDetail.as_view(),name='Detail'),
+    path('especialidades/borrar/<pk>', views.especialidadDelete.as_view(),name='Delete'),
 ] 
