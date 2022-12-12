@@ -114,16 +114,41 @@ def agendaDisponiblePorMedico (request):
 def turnoReservado (request):
     return render('AppTurnos1/turnoReservado.html')    
 
+# MEDICOS
+
+class medicoList(ListView):
+    model = medicos
+    template= 'Appturnos1/medicos_List.html'
+    
+class medicoCreate(CreateView):
+    model = medicos
+    fields= '__all__'
+    success_url= '/Appturnos1/medicos/lista/'
+    
+class medicoEdit(UpdateView):
+    model = medicos
+    fields= '__all__'
+    success_url= '/Appturnos1/medicos/lista/'
+    
+class medicoDetail(DetailView):
+    model = medicos
+    template= 'Appturnos1/medicos_Detail.html'   
+    
+class medicoDelete(DeleteView):
+    model = medicos     
+    success_url= '/Appturnos1/medicos/lista/'         
+
+# PACIENTES
 
 class pacienteList(ListView):
     model = pacientes
     template= 'Appturnos1/pacientes_List.html'
-    
+        
 class pacienteCreate(CreateView):
     model = pacientes
     fields= '__all__'
-    success_url= '/Appturnos1/pacientes/lista/'#'http://127.0.0.1:8000/Appturnos1/especialidades/lista/'    
-
+    success_url= '/Appturnos1/pacientes/lista/'
+    
 class pacienteEdit(UpdateView):
     model = pacientes
     fields= '__all__'
@@ -135,6 +160,4 @@ class pacienteDetail(DetailView):
     
 class pacienteDelete(DeleteView):
     model = pacientes     
-    success_url= '/Appturnos1/pacientes/lista/'     
-
-        
+    success_url= '/Appturnos1/pacientes/lista/'    

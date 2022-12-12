@@ -4,7 +4,12 @@ from AppTurnos1 import views
 urlpatterns = [
     path('', views.inicio),
     # path('inicio', views.inicio,name='inicio'),
-    path('medicos/', views.medico,name='medico'),
+    path('medicos/', views.medico,name='medico'),    
+    path('medicos/lista/', views.medicoList.as_view(),name='Listmedico'),
+    path('medicos/crear/', views.medicoCreate.as_view(),name='Newmedico'),
+    path('medicos/editar/<pk>', views.medicoEdit.as_view(),name='Editmedico'),
+    path('medicos/detalle/<pk>', views.medicoDetail.as_view(),name='Detailmedico'),
+    path('medicos/borrar/<pk>', views.medicoDelete.as_view(),name='Deletemedico'),
     path('medicosApi/', views.medicosapi),
     #
     path('agendaDisponiblePorMedico/', views.agendaDisponiblePorMedico),
