@@ -28,9 +28,8 @@ class pacientes(models.Model):
 
 class agendaDisponiblePorMedico(models.Model):
     medico= models.CharField(max_length=40)
-    dia = models.DateField()
-    desde = models.DateTimeField('dia/hora', null=True ,  blank=True)
-    hasta = models.TimeField('tiempo', null=True,  blank=True)
+    desde = models.DateTimeField('dia/desde hora', null=True ,  blank=True)
+    hasta = models.TimeField('hora hast', null=True,  blank=True)
 
 class turnoReservado(models.Model):
     DNI=models.IntegerField()
