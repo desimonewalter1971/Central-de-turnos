@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import context
-from AppTurnos1.models import medicos, pacientes, especialidades 
+from AppTurnos1.models import medicos, pacientes, especialidades,agendaDisponiblePorMedico as agenda 
 from django.core import serializers
+
 
 from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario
 
@@ -71,21 +72,21 @@ from django.views.generic.detail import DetailView
 
 class especialidadList(ListView):
     model = especialidades
-    template= 'Appturnos1/especialidades_List.html'
+    template= 'AppTurnos1/especialidades_List.html'
     
 class especialidadCreate(CreateView):
     model = especialidades
     fields= '__all__'
-    success_url= '/Appturnos1/especialidades/lista/'#'http://127.0.0.1:8000/Appturnos1/especialidades/lista/'    
+    success_url= '/AppTurnos1/especialidades/lista/'#'http://127.0.0.1:8000/Appturnos1/especialidades/lista/'    
 
 class especialidadEdit(UpdateView):
     model = especialidades
     fields= '__all__'
-    success_url= '/Appturnos1/especialidades/lista/'
+    success_url= '/AppTurnos1/especialidades/lista/'
     
 class especialidadDetail(DetailView):
     model = especialidades
-    template= 'Appturnos1/especialidades_Detail.html'   
+    template= 'AppTurnos1/especialidades_Detail.html'   
     
 class especialidadDelete(DeleteView):
     model = especialidades       
@@ -108,8 +109,7 @@ def paciente (request):
  
     return render(request, "AppTurnos1/pacientes.html", {"miFormulariopacientes": miFormulariopacientes})
 
-def agendaDisponiblePorMedico (request):
-    return render('AppTurnos1/agendaDisponiblePorMedico.html')
+
 
 def turnoReservado (request):
     return render('AppTurnos1/turnoReservado.html')    
@@ -118,46 +118,73 @@ def turnoReservado (request):
 
 class medicoList(ListView):
     model = medicos
-    template= 'Appturnos1/medicos_List.html'
+    template= 'AppTurnos1/medicos_List.html'
     
 class medicoCreate(CreateView):
     model = medicos
     fields= '__all__'
-    success_url= '/Appturnos1/medicos/lista/'
+    success_url= '/AppTurnos1/medicos/lista/'
     
 class medicoEdit(UpdateView):
     model = medicos
     fields= '__all__'
-    success_url= '/Appturnos1/medicos/lista/'
+    success_url= '/AppTurnos1/medicos/lista/'
     
 class medicoDetail(DetailView):
     model = medicos
-    template= 'Appturnos1/medicos_Detail.html'   
+    template= 'AppTurnos1/medicos_Detail.html'   
     
 class medicoDelete(DeleteView):
     model = medicos     
-    success_url= '/Appturnos1/medicos/lista/'         
+    success_url= '/AppTurnos1/medicos/lista/'         
 
 # PACIENTES
 
 class pacienteList(ListView):
     model = pacientes
-    template= 'Appturnos1/pacientes_List.html'
+    template= 'AppTurnos1/pacientes_List.html'
         
 class pacienteCreate(CreateView):
     model = pacientes
     fields= '__all__'
-    success_url= '/Appturnos1/pacientes/lista/'
+    success_url= '/AppTurnos1/pacientes/lista/'
     
 class pacienteEdit(UpdateView):
     model = pacientes
     fields= '__all__'
-    success_url= '/Appturnos1/pacientes/lista/'
+    success_url= '/AppTurnos1/pacientes/lista/'
     
 class pacienteDetail(DetailView):
     model = pacientes
-    template= 'Appturnos1/pacientes_Detail.html'   
+    template= 'AppTurnos1/pacientes_Detail.html'   
     
 class pacienteDelete(DeleteView):
     model = pacientes     
-    success_url= '/Appturnos1/pacientes/lista/'    
+    success_url= '/AppTurnos1/pacientes/lista/' 
+    
+#
+
+def agenda (request):
+    return render('AppTurnos1/agendaDisponiblePorMedico.html')
+
+class agendaList(ListView):
+    model = agenda
+    template= 'AppTurnos1/agenda_List.html'
+        
+class agendaCreate(CreateView):
+    model = agenda
+    fields= '__all__'
+    success_url= '/AppTurnos1/agenda/lista/'
+    
+class agendaEdit(UpdateView):
+    model = agenda
+    fields= '__all__'
+    success_url= '/AppTurnos1/agenda/lista/'
+    
+class agendaDetail(DetailView):
+    model = agenda
+    template= 'AppTurnos1/agenda_Detail.html'   
+    
+class agendaDelete(DeleteView):
+    model = agenda     
+    success_url= '/AppTurnos1/agenda/lista/'       

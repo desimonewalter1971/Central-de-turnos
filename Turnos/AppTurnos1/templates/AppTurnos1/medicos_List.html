@@ -9,11 +9,8 @@
 <ul>
     {% for medico in object_list %}
 
-        <p>{{medico.nombre}}</p>
-        <p>{{medico.apellido}}</p>
-        <p>{{medico.matricula}}</p>
-
-    
+        <p>Dr/a: {{medico.nombre}} {{medico.apellido}} - Espcialista en: {{medico.dedicacion}} - Matricula N°: {{medico.matricula}}</p>
+            
         <p>
             <a href="{% url 'Detailmedico' medico.id %}"> Ver</a>
             <a href="{% url 'Editmedico' medico.id %}"> Editar</a>

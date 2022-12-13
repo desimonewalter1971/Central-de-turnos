@@ -1,0 +1,25 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Lista Pacientes </h5>
+ 
+<ul>
+    {% for agenda in object_list %}
+        
+        <p>{{agenda.medico}} {{agenda.dia}} - {{agenda.desde}} - {{agenda.hasta}} <p>
+                  
+        <p>
+            <a href="{% url 'Detailagenda' agenda.id %}"> Ver</a>
+            <a href="{% url 'Editagenda' agenda.id %}"> Editar</a>
+            <a href="{% url 'Deleteagenda' agenda.id %}"> Borrar</a>
+        </p>    
+
+    {% endfor %}    
+</ul>
+
+{% endblock %}
+
+
