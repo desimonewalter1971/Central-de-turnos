@@ -5,16 +5,12 @@
 {% block Acavaloquecambia %}
 
 <h5> Lista Pacientes </h5>
-
+ 
 <ul>
     {% for paciente in object_list %}
-
-        <p>{{paciente.nombre}}</p>
-        <p>{{paciente.apellido}}</p>
-        <p>{{paciente.obraSocial}}</p>
-        <p>{{paciente.DNI}}</p>
-        <p>{{paciente.fechaNacimiento}}</p>
-    
+        
+        <p>{{paciente.nombre}} {{paciente.apellido}} - DNI: {{paciente.DNI}} - {{paciente.fechaNacimento}} - Obra social: {{paciente.obraSocial}}</p>
+                  
         <p>
             <a href="{% url 'Detailpaciente' paciente.id %}"> Ver</a>
             <a href="{% url 'Editpaciente' paciente.id %}"> Editar</a>

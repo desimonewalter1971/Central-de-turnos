@@ -2,8 +2,8 @@ from django.urls import path
 from AppTurnos1 import views
  
 urlpatterns = [
-    path('', views.inicio),
-    # path('inicio', views.inicio,name='inicio'),
+    ## path('', views.inicio),
+    path('inicio', views.inicio,name='inicio'),
     path('medicos/', views.medico,name='medico'),    
     path('medicos/lista/', views.medicoList.as_view(),name='Listmedico'),
     path('medicos/crear/', views.medicoCreate.as_view(),name='Newmedico'),

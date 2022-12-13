@@ -62,22 +62,33 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a class="nav-item nav-link active" href="index.html" >Inicio</a>
+                        <a class="nav-item nav-link active" href="{% url 'inicio' %}" >Inicio </a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profesionales</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{% url 'medico' %} " class="dropdown-item">Médico</a>
-                                <a href="{% url 'especialidad' %} " class="dropdown-item">Especialidad</a>
+                                <a href="{% url 'Newmedico' %} " class="dropdown-item">Nuevo Médico </a>
+                                <a href="{% url 'New' %} " class="dropdown-item">Nueva Especialidad</a>
+                                <a href="{% url 'Listmedico' %} " class="dropdown-item">Buscar Médico </a>
+                                <a href="{% url 'List' %} " class="dropdown-item">Buscar Especialidad</a>
                             </div>                                                      
                         </div>
-                        <a class="nav-item nav-link active" href="{% url 'pacientes' %} ">Pacientes</a>
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pacientes</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'Newpaciente' %} " class="dropdown-item">Nuevo Paciente </a>
+                                <a href="{% url 'Listpaciente' %} " class="dropdown-item">Buscar Paciente </a>
+                            </div>  
+                        </div>
+               
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Turnos</a>
                             <div class="dropdown-menu m-0">
-                                <a href="appointment.html" class="dropdown-item">Solicita Turnos</a>
+                                <a href="appointment.html" class="dropdown-item">Cargar Turnos</a>
+                                <a href="appointment.html" class="dropdown-item">Solicitar Turnos</a>
                             </div>
                         </div>
-                        <a class="nav-item nav-link active" href="{% url 'turnoReservado' %} ">Consulta Reservas</a>
+                        <a class="nav-item nav-link active" href="{% url 'turnoReservado' %}">Consulta Reservas</a>
                     </div>
                 </div>
             </nav>
