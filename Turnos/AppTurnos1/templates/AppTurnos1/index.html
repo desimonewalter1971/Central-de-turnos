@@ -84,11 +84,11 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Turnos</a>
                             <div class="dropdown-menu m-0">
-                                <a href="appointment.html" class="dropdown-item">Cargar Turnos</a>
-                                <a href="appointment.html" class="dropdown-item">Solicitar Turnos</a>
+                                <a href="{% url 'Newagenda' %} " class="dropdown-item">Cargar Turnos</a>
+                                <a href="{% url 'Listagenda' %} " class="dropdown-item">Consultar Turnos</a>
                             </div>
                         </div>
-                        <a class="nav-item nav-link active" href="{% url 'turnoReservado' %}">Consulta Reservas</a>
+                        <a class="nav-item nav-link active" href="">Consulta Reservas</a>
                     </div>
                 </div>
             </nav>

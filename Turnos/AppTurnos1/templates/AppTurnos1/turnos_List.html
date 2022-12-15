@@ -1,0 +1,25 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Lista Turno Reservado </h5>
+ 
+<ul>
+    {% for turno in object_list %}
+        
+        <p>{{turnos.DNI}} {{turnos.nombre}} - {{turnos.apellido}} - {{turnos.medico}} - {{turnos.obraSocial}} - {{turnos.Dia}} <p>
+                  
+        <p>
+            <a href="{% url 'Detailturnos' turnos.id %}"> Ver</a>
+            <a href="{% url 'Editturnos' turnos.id %}"> Editar</a>
+            <a href="{% url 'Deleteturnos' turnos.id %}"> Borrar</a>
+        </p>    
+
+    {% endfor %}    
+</ul>
+
+{% endblock %}
+
+

@@ -1,15 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import context
-from AppTurnos1.models import medicos, pacientes, especialidades,agendaDisponiblePorMedico as agenda 
-from django.core import serializers
-
+from AppTurnos1.models import *
+from django.core import serializers 
 
 from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario
 
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 
 def inicio (request):
     return render(request,"Appturnos1/index.html")
+
+#-----------------------------------------------MEDICOS----------------------------------------#
 
 def medico (request):
     if request.method == "POST":
@@ -29,6 +33,30 @@ def medico (request):
 def medicosapi (request):
     todos_medicos=medicos.objects.all()
     return HttpResponse(serializers.serialize('json', todos_medicos))    
+
+class medicoList(ListView):
+    model = medicos
+    template= 'AppTurnos1/medicos_List.html'
+    
+class medicoCreate(CreateView):
+    model = medicos
+    fields= '__all__'
+    success_url= '/AppTurnos1/medicos/lista/'
+    
+class medicoEdit(UpdateView):
+    model = medicos
+    fields= '__all__'
+    success_url= '/AppTurnos1/medicos/lista/'
+    
+class medicoDetail(DetailView):
+    model = medicos
+    template= 'AppTurnos1/medicos_Detail.html'   
+    
+class medicoDelete(DeleteView):
+    model = medicos     
+    success_url= '/AppTurnos1/medicos/lista/'         
+
+#-----------------------------------------------ESPECIALIDAD----------------------------------------#
 
 def especialidadForm (request):   
     if request.method == 'POST':
@@ -66,10 +94,6 @@ def borrarespecialidad (request):
     especialidad.delete()
     return HttpResponse(f'{especialidad_borrar}, ha sido eliminada')
 
-from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
-
 class especialidadList(ListView):
     model = especialidades
     template= 'AppTurnos1/especialidades_List.html'
@@ -92,7 +116,7 @@ class especialidadDelete(DeleteView):
     model = especialidades       
     success_url= '/Appturnos1/especialidades/lista/'     
 
-#
+#-----------------------------------------------PACIENTES----------------------------------------##
 
 def paciente (request):
     if request.method == "POST":
@@ -108,37 +132,6 @@ def paciente (request):
         miFormulariopacientes = pacientesFormulario()
  
     return render(request, "AppTurnos1/pacientes.html", {"miFormulariopacientes": miFormulariopacientes})
-
-
-
-def turnoReservado (request):
-    return render('AppTurnos1/turnoReservado.html')    
-
-# MEDICOS
-
-class medicoList(ListView):
-    model = medicos
-    template= 'AppTurnos1/medicos_List.html'
-    
-class medicoCreate(CreateView):
-    model = medicos
-    fields= '__all__'
-    success_url= '/AppTurnos1/medicos/lista/'
-    
-class medicoEdit(UpdateView):
-    model = medicos
-    fields= '__all__'
-    success_url= '/AppTurnos1/medicos/lista/'
-    
-class medicoDetail(DetailView):
-    model = medicos
-    template= 'AppTurnos1/medicos_Detail.html'   
-    
-class medicoDelete(DeleteView):
-    model = medicos     
-    success_url= '/AppTurnos1/medicos/lista/'         
-
-# PACIENTES
 
 class pacienteList(ListView):
     model = pacientes
@@ -160,12 +153,9 @@ class pacienteDetail(DetailView):
     
 class pacienteDelete(DeleteView):
     model = pacientes     
-    success_url= '/AppTurnos1/pacientes/lista/' 
+    success_url= '/AppTurnos1/pacientes/lista/'    
     
-#
-
-def agenda (request):
-    return render('AppTurnos1/agendaDisponiblePorMedico.html')
+#-----------------------------------------------AGENDA----------------------------------------#    
 
 class agendaList(ListView):
     model = agenda
@@ -186,5 +176,34 @@ class agendaDetail(DetailView):
     template= 'AppTurnos1/agenda_Detail.html'   
     
 class agendaDelete(DeleteView):
-    model = agenda     
-    success_url= '/AppTurnos1/agenda/lista/'       
+    model = agenda
+    success_url= '/AppTurnos1/agenda/lista/'  
+
+#-----------------------------------------------TURNOS----------------------------------------#    
+    
+    
+def turno (request):
+    return render('AppTurnos1/turno.html')   
+
+class turnosList(ListView):
+    model = turnos
+    template= 'AppTurnos1/turnos_List.html'
+        
+class turnosCreate(CreateView):
+    model = turnos
+    fields= '__all__'
+    success_url= '/AppTurnos1/turnos/lista/'
+    
+class turnosEdit(UpdateView):
+    model = turnos
+    fields= '__all__'
+    success_url= '/AppTurnos1/turnos/lista/'
+    
+class turnosDetail(DetailView):
+    model = turnos
+    template= 'AppTurnos1/turnos_Detail.html'   
+    
+class turnosDelete(DeleteView):
+    model = turnos
+    success_url= '/AppTurnos1/turnos/lista/'   
+         
