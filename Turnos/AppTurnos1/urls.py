@@ -40,7 +40,7 @@ urlpatterns = [
     path('agenda/borrar/<pk>', views.agendaDelete.as_view(),name='Deleteagenda'),
     #
     path('turnos/lista/', views.turnosList.as_view(),name='Listturnos'),
-    path('turnos/crear/', views.turnosCreate.as_view(),name='Newaturnos'),
+    path('turnos/crear/', views.turnosCreate.as_view(),name='Newturnos'),
     path('turnos/editar/<pk>', views.turnosEdit.as_view(),name='Editturnos'),
     path('turnos/detalle/<pk>', views.turnosDetail.as_view(),name='Detailturnos'),
     path('turnos/borrar/<pk>', views.turnosDelete.as_view(),name='Deleteturnos'),
