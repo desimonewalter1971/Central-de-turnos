@@ -6,6 +6,7 @@
 
 <h5> Detalle Turnos </h5>
 
-    Turnos Asignados href="{% url 'Listturnos' %}"> <br><br> Regresar</a>
+    Turno Asignado: {{turnos.id}} DNI: {{turnos.DNI}} Paciente: {{turnos.nombre}}  {{turnos.apellido}} Dr/a: {{turnos.medico}} Prepaga: {{turnos.obraSocial}} - {{turnos.Dia}} <p>
+    <a href= "{% url 'Listturnos' %}"> <br><br> Regresar</a>
 
 {% endblock %}

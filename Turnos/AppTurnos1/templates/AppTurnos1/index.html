@@ -85,10 +85,10 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Turnos</a>
                             <div class="dropdown-menu m-0">
                                 <a href="{% url 'Newagenda' %} " class="dropdown-item">Cargar Turnos</a>
-                                <a href="{% url 'Listagenda' %} " class="dropdown-item">Consultar Turnos</a>
+                                <a href="{% url 'Listagenda' %} " class="dropdown-item">Consultar Disponibilidad Turnos</a>
                             </div>
                         </div>
-                        <a class="nav-item nav-link active" href="">Consulta Reservas</a>
+                        <a href="{% url 'Listturnos' %} " class="nav-item nav-link active" >Consulta Reservas</a>
                     </div>
                 </div>
             </nav>
