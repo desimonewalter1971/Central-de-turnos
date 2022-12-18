@@ -1,0 +1,25 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Lista Pacientes </h5>
+ 
+<ul>
+    {% for paciente in object_list %}
+        
+        <p>{{paciente.nombre}} {{paciente.apellido}} - DNI: {{paciente.DNI}} - {{paciente.fechaNacimento}} - Obra social: {{paciente.obraSocial}} - email: {{paciente.email}}</p>
+                  
+        <p>
+            <a href="{% url 'Detailpaciente' paciente.id %}"> Ver</a>
+            <a href="{% url 'Editpaciente' paciente.id %}"> Editar</a>
+            <a href="{% url 'Deletepaciente' paciente.id %}"> Borrar</a>
+        </p>    
+
+    {% endfor %}    
+</ul>
+
+{% endblock %}
+
+

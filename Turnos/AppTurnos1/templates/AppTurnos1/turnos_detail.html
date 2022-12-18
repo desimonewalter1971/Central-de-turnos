@@ -1,0 +1,12 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Detalle Turnos </h5>
+
+    Turno Asignado: {{turnos.id}} DNI: {{turnos.DNI}} Paciente: {{turnos.nombre}}  {{turnos.apellido}} Dr/a: {{turnos.medico}} Prepaga: {{turnos.obraSocial}} - {{turnos.Dia}} <p>
+    <a href= "{% url 'Listturnos' %}"> <br><br> Regresar</a>
+
+{% endblock %}

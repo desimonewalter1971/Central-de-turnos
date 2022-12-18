@@ -4,15 +4,17 @@
 
 {% block Acavaloquecambia %}
 
-<h5> Médicos </h5>
-
 <form action=""    method="post">{% csrf_token %}
-    <table>
-        {{miFormulariomedicos.as_table}}
-    </table>
+ 
+    <p> Estas seguro que queres borrar la Reserva del turno{{ object.turnos }}?</p>
+  
     <br>
-    <input type="submit" value= "cargar">
+    <input type="submit" value= "Eliminar">
 
 </form>
 
+<br>
+
+    <select> </select>
+    
 {% endblock %}

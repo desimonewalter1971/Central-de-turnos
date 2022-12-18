@@ -1,0 +1,12 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Detalle Agenda </h5>
+
+    Dias Disponibles {{agenda.id}} - {{agenda.medico}} - {{agenda.dia}} - {{agenda.desde}} - {{agenda.hasta}} 
+    <a href="{% url 'Listagenda'   %}"> <br><br> Regresar</a>
+
+{% endblock %}

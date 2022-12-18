@@ -1,0 +1,21 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+
+<h5> Crear Especialidad </h5>
+
+<form action=""    method="post">{% csrf_token %}
+   <table>
+      {{miFormularioespecialidad.as_table}}
+          
+  </table>
+  <p><input type="submit", value= "Cargar"></p>      
+  
+    
+</form>
+
+
+{% endblock %}

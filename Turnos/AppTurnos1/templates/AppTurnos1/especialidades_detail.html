@@ -1,0 +1,12 @@
+{% extends "AppTurnos1/index.html" %}
+
+{% load static %}
+
+{% block Acavaloquecambia %}
+
+<h5> Detalle Especialidades </h5>
+
+    Especialidad: {{especialidades.id}} - {{especialidades.especialidad}}
+    <a href="{% url 'List'   %}"> <br><br> Regresar</a>
+
+{% endblock %}

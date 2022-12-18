@@ -4,7 +4,7 @@
 <head>
     {%load static%}
     <meta charset="utf-8">
-    <title>MEDINOVA - Hospital Website Template</title>
+    <title>MEDINOVA - Reservas Turnos</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -29,6 +29,11 @@
 
     <!-- Template Stylesheet -->
     <link href="{%static 'Appturnos1/css/style.css' %}" rel="stylesheet">
+
+
+    <!-- Using Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 
@@ -41,7 +46,7 @@
                     <div class="d-inline-flex align-items-center">
                         <a class="text-decoration-none text-body pe-3" href=""><i class="bi bi-telephone me-2"></i>+012 345 6789</a>
                         <span class="text-body">|</span>
-                        <a class="text-decoration-none text-body px-3" href=""><i class="bi bi-envelope me-2"></i>info@example.com</a>
+                        <a class="text-decoration-none text-body px-3" href=""><i class="bi bi-envelope me-2"></i>info@mediova.com</a>
                     </div>
                 </div>
             </div>
@@ -62,16 +67,41 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a class="nav-item nav-link active" href="index.html" >Inicio</a>
-                        <a class="nav-item nav-link active" href="{% url 'medico' %} ">Médicos</a>
-                        <a class="nav-item nav-link active" href="{% url 'pacientes' %} ">Pacientes</a>
-                        <a class="nav-item nav-link active" href="{% url 'turnoReservado' %} ">Reservas</a>
+                        <a class="nav-item nav-link active" href="{% url 'inicio' %}" >Inicio </a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Profesionales</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'Newmedico' %} " class="dropdown-item">Nuevo Médico </a>
+                                <a href="{% url 'New' %} " class="dropdown-item">Nueva Especialidad</a>
+                                <a href="{% url 'Listmedico' %} " class="dropdown-item">Buscar Médico </a>
+                                <a href="{% url 'List' %} " class="dropdown-item">Buscar Especialidad</a>
+                            </div>                                                      
+                        </div>
+
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pacientes</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'Newpaciente' %} " class="dropdown-item">Nuevo Paciente </a>
+                                <a href="{% url 'Listpaciente' %} " class="dropdown-item">Buscar Paciente </a>
+                            </div>  
+                        </div>
+               
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Agenda</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{% url 'Newagenda' %} " class="dropdown-item">Cargar Agenda Turnos</a>
+                                <a href="{% url 'Listagenda' %} " class="dropdown-item">Consultar Disponibilidad Turnos</a>
+                            </div>
+                        </div>
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Turnos</a>
                             <div class="dropdown-menu m-0">
-                                <a href="appointment.html" class="dropdown-item">Solicita Turnos</a>
+                                <a href="{% url 'Newturnos' %} " class="dropdown-item">Solicitar Turnos</a>
+                                <a href="{% url 'Listturnos' %} " class="dropdown-item">Consultar Turnos Reservados</a>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </nav>
@@ -99,8 +129,6 @@
 
     {% block Acavaloquecambia %}
     {% endblock %}
-
-
 
     <!-- Appointment Start -->
     <div class="container-fluid bg-primary my-5 py-5">
