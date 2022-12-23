@@ -128,6 +128,7 @@
     <!-- Hero End -->
 
     {% block Acavaloquecambia %}
+    
     {% endblock %}
 
     <!-- Appointment Start -->
@@ -148,20 +149,21 @@
                         <h1 class="mb-4">Ingresa tus Datos</h1>
                         <form>
                             <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected>Elegi Especialidad</option>
-                                        <option value="1">Cardiologia</option>
-                                        <option value="2">Demartologia</option>
-                                        <option value="3">Traumatologia</option>
+                                <div class="col-12 col-sm-6"> 
+                                    <select class="form-select bg-light border-0" style="height: 55px;" id="IdEspecialidad" name="especialidades" onchange="CapturarValor();">
+                                        <p><option value="{{ 0 }}">{{ "Elegi Especialidad"}}</option></p>
+                                        {% for especialidad in object_list %}
+                                        <p><option value="{{ especialidad.id}}">{{ especialidad.especialidad}}</option></p>
+                                        
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected>Elegi Doctor</option>
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>
-                                        <option value="3">Doctor 3</option>
+                                    <select class="form-select bg-light border-0" style="height: 55px;" id="IdMedico" name="Medicos" onchange="CapturarValor();">
+                                        <p><option value="{{ 0 }}">{{ "Seleccione una opcion"}}</option></p>
+                                        {% for medico in object_list %}
+                                        <p><option value="{{ medico.id}}">Dr/a: {{ medico.nombre}} {{medico.apellido}}</option></p>
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
