@@ -4,10 +4,10 @@ from datetime import datetime
 class medicos(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
-    dedicacion= models.CharField(max_length=40)
+    servicio= models.CharField(max_length=40)
     matricula = models.IntegerField()
     def __str__(self):
-        return (f"Dr/a {self.nombre} {self.apellido} - especialidad: {self.dedicacion} - Matricula N°: {self.matricula}")
+        return (f"Dr/a {self.nombre} {self.apellido} - Servicio: {self.servicio} - Matricula N°: {self.matricula}")
 
 
 class especialidades(models.Model):

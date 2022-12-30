@@ -11,7 +11,7 @@
             <select class="form-select bg-light border-0" style="height: 55px;" id="IdMedico" name="medicos" onchange="CapturarValor();">
                 <p><option value="{{ 0 }}">{{ "Seleccione el medico de su preferencia"}}</option></p>
                 {% for medico in object_list %}
-                <p><option value="{{ medico.id}}">Dr/a: {{medico.nombre}} {{medico.apellido}} - Espcialista en: {{medico.dedicacion}} - Matricula N°: {{medico.matricula}}</option></p>
+                <p><option value="{{ medico.id}}">Dr/a: {{medico.nombre}} {{medico.apellido}} - Servicio: {{medico.dedicacion}} - Matricula N°: {{medico.matricula}}</option></p>
                 
                 {% endfor %}
             </select>
