@@ -4,22 +4,48 @@
 
 {% block Acavaloquecambia %}
 
-<h5> Lista Medicos </h5>
-
 <ul>
-    {% for medico in object_list %}
+    <div class="row g-3">
+        <div class="col-12 col-sm-3"> 
+            <h5> Lista Medicos </h5>
+            <select class="form-select bg-light border-0" style="height: 55px;" id="IdMedico" name="medicos" onchange="CapturarValor();">
+                <p><option value="{{ 0 }}">{{ "Seleccione el medico de su preferencia"}}</option></p>
+                {% for medico in object_list %}
+                <p><option value="{{ medico.id}}">Dr/a: {{medico.nombre}} {{medico.apellido}} - Espcialista en: {{medico.dedicacion}} - Matricula N°: {{medico.matricula}}</option></p>
+                
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function CapturarValor()
+        {
+        /* Para obtener el valor */
+        var cod = document.getElementById("IdMedico").value;
 
-        <p>Dr/a: {{medico.nombre}} {{medico.apellido}} - Espcialista en: {{medico.dedicacion}} - Matricula N°: {{medico.matricula}}</p>
-            
-        <p>
-            <a href="{% url 'Detailmedico' medico.id %}"> Ver</a>
-            <a href="{% url 'Editmedico' medico.id %}"> Editar</a>
-            <a href="{% url 'Deletemedico' medico.id %}"> Borrar</a>
-        </p>    
+        var urlDetalle = "{% url 'Detailmedico' 0 %}".replace("0", cod);
+        var urlEditar = "{% url 'Editmedico' 0 %}".replace("0", cod);
+        var urlEliminar = "{% url 'Deletemedico' 0 %}".replace("0", cod);
+        document.getElementById("IdVer").href  = urlDetalle;
+        document.getElementById("IdEditar").href  = urlEditar;
+        document.getElementById("IdBorrar").href  = urlEliminar;
 
-    {% endfor %}    
+        if (cod == '0')
+            {
+                document.getElementById("IdVer").href  = '';
+                document.getElementById("IdEditar").href  = '';
+                document.getElementById("IdBorrar").href  = '';
+                alert('Debe seleccionar un valor');
+            }
+        }
+        </script>
+
+
+    <br>
+    <a id="IdVer" > Ver</a>
+    <a id="IdEditar"> Editar</a>
+    <a id="IdBorrar"> Borrar</a>
 </ul>
 
 {% endblock %}
-
 

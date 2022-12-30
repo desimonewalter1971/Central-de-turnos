@@ -1,10 +1,18 @@
-{% extends "AppTurnos1/inicio.html" %}
+{% extends "AppTurnos1/index.html" %}
 
 {% load static %}
 
 {% block Acavaloquecambia %}
 
 <h1> Reserva de turnos </h1>
-<p> Aca va la info de Turnos </p>
+
+<form action=""    method="post">{% csrf_token %}
+    <table>
+        {{miFormularioturnos.as_table}}
+    </table>
+    <br>
+    <input type="submit" value= "Cargar">
+
+</form>
 
 {% endblock %}

@@ -4,7 +4,7 @@ from django.template import context
 from AppTurnos1.models import *
 from django.core import serializers 
 
-from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario
+from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario, turnosFormularios
 
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -183,7 +183,20 @@ class agendaDelete(DeleteView):
     
     
 def turno (request):
-    return render('AppTurnos1/turno.html')   
+    if request.method == "POST":
+        infoFormularioTurnos= turnosFormularios(request.POST) # Aqui me llega la informacion del html
+         
+        if infoFormularioTurnos.is_valid():
+            informacion = infoFormularioTurnos.cleaned_data
+            turno= turnos(nombre=informacion["nombre"], apellido=informacion["apellido"], obraSocial=informacion["obraSocial"], medico=informacion["medico"], Dia=informacion["Dia"])
+            turno.save()
+            return render(request, "AppTurnos1/turnos.html")
+
+    else:
+        miFormularioturnos = turnosFormularios()
+ 
+    return render(request, 'AppTurnos1/turnos.html', {"miFormularioturnos": miFormularioturnos})
+    
 
 class turnosList(ListView):
     model = turnos
@@ -192,6 +205,7 @@ class turnosList(ListView):
 class turnosCreate(CreateView):
     model = turnos
     fields= '__all__'
+    print(fields)
     success_url= '/AppTurnos1/turnos/lista/'
     
 class turnosEdit(UpdateView):

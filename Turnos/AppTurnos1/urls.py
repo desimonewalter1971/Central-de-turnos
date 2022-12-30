@@ -12,7 +12,7 @@ urlpatterns = [
     path('medicos/borrar/<pk>', views.medicoDelete.as_view(),name='Deletemedico'),
     path('medicosApi/', views.medicosapi),
     #
-    path('turnos/', views.turnos,name='turno'),
+    
     #
     path('pacientes/', views.paciente,name='pacientes'),
     path('pacientes/lista/', views.pacienteList.as_view(),name='Listpaciente'),
@@ -39,6 +39,7 @@ urlpatterns = [
     path('agenda/detalle/<pk>', views.agendaDetail.as_view(),name='Detailagenda'),
     path('agenda/borrar/<pk>', views.agendaDelete.as_view(),name='Deleteagenda'),
     #
+    path('turnos/', views.turno,name='turno'),
     path('turnos/lista/', views.turnosList.as_view(),name='Listturnos'),
     path('turnos/crear/', views.turnosCreate.as_view(),name='Newturnos'),
     path('turnos/editar/<pk>', views.turnosEdit.as_view(),name='Editturnos'),

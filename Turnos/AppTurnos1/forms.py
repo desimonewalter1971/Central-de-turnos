@@ -12,8 +12,15 @@ class pacientesFormulario(forms.Form):
     apellido= forms.CharField()
     obraSocial= forms.CharField()
     DNI=forms.IntegerField()
-    fechaNacimento= forms.DateField()    
+    fecha_Nacimento= forms.DateField()    
 
 class especialidadesFormulario(forms.Form):
     especialidad= forms.CharField()
 
+class turnosFormularios(forms.Form):
+    DNI=forms.IntegerField()
+    nombre = forms.CharField()
+    apellido = forms.CharField
+    medico= forms.CharField()
+    obra_Social = forms.CharField()
+    Dia = forms.DateTimeField()
