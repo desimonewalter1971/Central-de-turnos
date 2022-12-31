@@ -39,15 +39,11 @@ class agendas(models.Model):
                 
               
 class turnos(models.Model):
-    DNI=models.IntegerField()
-    nombre = models.CharField(max_length=40)
-    apellido = models.CharField(max_length=40)
-    medico= models.CharField(max_length=40)
-    obraSocial = models.CharField(max_length=40)
-    Dia = models.DateTimeField('Dia / horario', null=True ,  blank=True)
-    
+    paciente=models.OneToOneField("AppTurnos1.pacientes", on_delete=models.CASCADE)
+    agenda=models.OneToOneField("AppTurnos1.agendas", on_delete=models.CASCADE)
+    hora= models.TimeField('Hasta hora', null=True,  blank=True)   
     def __str__(self):
-        return (f"Paciente: {self.apellido} {self.nombre} - DNI: {self.DNI} - Prestador: {self.obraSocial} - Profesional: {self.medico} - dia: {self.Dia}")
+        return (f" {self.paciente.apellido} {self.paciente.nombre} - DNI: {self.paciente.DNI} - Prestador: {self.paciente.obraSocial} - Profesional: {self.agenda.medico} - dia: {self.hora}")
 
  
 
