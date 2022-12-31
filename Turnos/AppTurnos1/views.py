@@ -4,7 +4,9 @@ from django.template import context
 from AppTurnos1.models import *
 from django.core import serializers 
 
-from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario, turnosFormularios
+
+from AppTurnos1.forms import medicosFormulario ,pacientesFormulario ,especialidadesFormulario, turnosFormularios, agendaFormularios
+
 
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -15,7 +17,7 @@ def inicio (request):
 
 #-----------------------------------------------MEDICOS----------------------------------------#
 
-def medico (request):
+def medicoForm (request):
     if request.method == "POST":
         infoFormulariomedicos = medicosFormulario(request.POST) # Aqui me llega la informacion del html
          
@@ -118,7 +120,7 @@ class especialidadDelete(DeleteView):
 
 #-----------------------------------------------PACIENTES----------------------------------------##
 
-def paciente (request):
+def pacienteForm (request):
     if request.method == "POST":
         infoFormularioPacientes = pacientesFormulario(request.POST) # Aqui me llega la informacion del html
          
@@ -157,38 +159,53 @@ class pacienteDelete(DeleteView):
     
 #-----------------------------------------------AGENDA----------------------------------------#    
 
+def agendaForm (request):
+    if request.method == "POST":
+        infoFormularioAgenda= agendaFormularios(request.POST) # Aqui me llega la informacion del html
+         
+        if infoFormularioAgenda.is_valid():
+            informacion = infoFormularioAgenda.cleaned_data
+            agend= agendas(profesional=informacion["profesional"], desde=informacion["desde"],hasta=informacion["hasta"])
+            agend.save()
+            return render(request, "AppTurnos1/agendas.html")
+
+    else:
+        miFormularioagenda = agendaFormularios()
+ 
+    return render(request, 'AppTurnos1/agendas.html', {"miFormularioagenda": miFormularioagenda})
+
 class agendaList(ListView):
-    model = agenda
-    template= 'AppTurnos1/agenda_List.html'
+    model = agendas
+    template= 'AppTurnos1/agendas_List.html'
         
 class agendaCreate(CreateView):
-    model = agenda
+    model = agendas
     fields= '__all__'
     success_url= '/AppTurnos1/agenda/lista/'
     
 class agendaEdit(UpdateView):
-    model = agenda
+    model = agendas
     fields= '__all__'
     success_url= '/AppTurnos1/agenda/lista/'
     
 class agendaDetail(DetailView):
-    model = agenda
+    model = agendas
     template= 'AppTurnos1/agenda_Detail.html'   
     
 class agendaDelete(DeleteView):
-    model = agenda
+    model = agendas
     success_url= '/AppTurnos1/agenda/lista/'  
 
 #-----------------------------------------------TURNOS----------------------------------------#    
     
     
-def turno (request):
+def turnoForm(request):
     if request.method == "POST":
         infoFormularioTurnos= turnosFormularios(request.POST) # Aqui me llega la informacion del html
          
         if infoFormularioTurnos.is_valid():
             informacion = infoFormularioTurnos.cleaned_data
-            turno= turnos(nombre=informacion["nombre"], apellido=informacion["apellido"], obraSocial=informacion["obraSocial"], medico=informacion["medico"], Dia=informacion["Dia"])
+            turno= turnos(nombre=informacion["nombre"], apellido=informacion["apellido"],  medico=informacion["medico"], Dia=informacion["Dia"]) #obraSocial=informacion["obraSocial"]
             turno.save()
             return render(request, "AppTurnos1/turnos.html")
 
