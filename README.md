@@ -17,3 +17,25 @@ las tres bases estan funcionales desde el Admin y formularios, salvo Especialida
 
 Gabriel, ya fuencionan los tres modelos, se pueden cargar datos desde admin y formularios. 8/12/2022
 Falta el CRUD y la solicitud de tuno y consulta de reservas existentes buscada por paciente.
+
+
+Leonardo:
+
+Te explicaos en pocas lineas
+
+- Hay 5 Modelos
+Especilidad
+Medicos
+Paciente
+Agenda
+Turnos
+
+La idea esque la App nos permita:
+
+Crear especialiddes medica
+Crear Medicos por especialidad
+Crear Pacientes
+Crear una Agenda de disponibilidad por medico.
+Permitir solicitar un turno por paciente a una agenda existente.
+
+
