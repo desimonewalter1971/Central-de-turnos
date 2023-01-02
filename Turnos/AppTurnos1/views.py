@@ -23,7 +23,7 @@ def medicoForm (request):
          
         if infoFormulariomedicos.is_valid():
             informacion = infoFormulariomedicos.cleaned_data
-            medico= medicos(nombre=informacion["nombre"], apellido=informacion["apellido"],matricula=informacion["matricula"])
+            medico= medicos(nombre=informacion["nombre"], apellido=informacion["apellido"],matricula=informacion["matricula"],servico_id=informacion['servicio_id'])
             medico.save()
             return render(request, "AppTurnos1/medicos.html")
 
@@ -165,7 +165,7 @@ def agendaForm (request):
          
         if infoFormularioAgenda.is_valid():
             informacion = infoFormularioAgenda.cleaned_data
-            agend= agendas(profesional=informacion["profesional"], desde=informacion["desde"],hasta=informacion["hasta"])
+            agend= agenda(profesional=informacion["profesional"], desde=informacion["desde"],hasta=informacion["hasta"])
             agend.save()
             return render(request, "AppTurnos1/agendas.html")
 
@@ -175,25 +175,25 @@ def agendaForm (request):
     return render(request, 'AppTurnos1/agendas.html', {"miFormularioagenda": miFormularioagenda})
 
 class agendaList(ListView):
-    model = agendas
+    model = agenda
     template= 'AppTurnos1/agendas_List.html'
         
 class agendaCreate(CreateView):
-    model = agendas
+    model = agenda
     fields= '__all__'
     success_url= '/AppTurnos1/agenda/lista/'
     
 class agendaEdit(UpdateView):
-    model = agendas
+    model = agenda
     fields= '__all__'
     success_url= '/AppTurnos1/agenda/lista/'
     
 class agendaDetail(DetailView):
-    model = agendas
+    model = agenda
     template= 'AppTurnos1/agenda_Detail.html'   
     
 class agendaDelete(DeleteView):
-    model = agendas
+    model = agenda
     success_url= '/AppTurnos1/agenda/lista/'  
 
 #-----------------------------------------------TURNOS----------------------------------------#    
