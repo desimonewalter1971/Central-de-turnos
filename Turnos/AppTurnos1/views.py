@@ -23,7 +23,7 @@ def medicoForm (request):
          
         if infoFormulariomedicos.is_valid():
             informacion = infoFormulariomedicos.cleaned_data
-            medico= medicos(nombre=informacion["nombre"], apellido=informacion["apellido"],matricula=informacion["matricula"],servico_id=informacion['servicio_id'])
+            medico= medicos(nombre=informacion["nombre"], apellido=informacion["apellido"],matricula=informacion["matricula"],servico=informacion['servicio'])
             medico.save()
             return render(request, "AppTurnos1/medicos.html")
 

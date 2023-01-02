@@ -1,12 +1,15 @@
 from django import forms
 from .models import especialidades, medicos, pacientes, agenda
 
+listaespecialidades=()
+
+
 class medicosFormulario(forms.Form):
     nombre= forms.CharField()
     apellido= forms.CharField()
     matricula= forms.IntegerField()
-    Servicio_id= forms.ModelChoiceField( label= 'Especialidad', queryset=especialidades.objects.all())
-
+    Servicio= forms.CharField()
+    
 class pacientesFormulario(forms.Form):
     nombre= forms.CharField()
     apellido= forms.CharField()
