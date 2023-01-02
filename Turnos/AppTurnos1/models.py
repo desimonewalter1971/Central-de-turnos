@@ -24,7 +24,7 @@ class pacientes(models.Model):
     email=models.EmailField()
     
     def __str__(self):
-        return (f"Nombre-Apellido: {self.nombre} {self.apellido} - Obra Social: {self.obraSocial} - DNI: {self.DNI} - Fecha Nacimiento: {self.fecha_Nacimento}")
+        return (f" {self.nombre} {self.apellido} - Obra Social: {self.obraSocial} - DNI: {self.DNI} - Fecha Nacimiento: {self.fecha_Nacimento}")
 
 class agenda(models.Model):
     medico= models.OneToOneField("AppTurnos1.medicos", on_delete=models.CASCADE)
@@ -32,7 +32,7 @@ class agenda(models.Model):
     hasta = models.TimeField('Hasta hora', null=True,  blank=True)
     
     def __str__(self):
-        return (f"Nombre-Apellido: {self.medico} {self.desde} - Obra Social: {self.hasta}")
+        return (f" {self.medico} {self.desde} - Obra Social: {self.hasta}")
                 
 class turnos(models.Model):
     agenda=models.OneToOneField("AppTurnos1.agenda", on_delete=models.CASCADE)
