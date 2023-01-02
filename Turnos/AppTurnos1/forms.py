@@ -1,9 +1,6 @@
 from django import forms
 from .models import especialidades, medicos, pacientes, agenda
 
-listaespecialidades=()
-
-
 class medicosFormulario(forms.Form):
     nombre= forms.CharField()
     apellido= forms.CharField()
